@@ -1,0 +1,53 @@
+MKMapKit
+Visual Google Map component for Sonata framework.
+==================Sample usage (template file) ==================
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>{{pageTitle}}</title>
+{{metaDescription}}
+{{metaKeywords}}
+{{favicon}}
+
+{{styles}}
+{{javascripts}}
+</head>
+<body>
+    <? $doejo = MKMapKit::coordinatesFromAddress("2934 N Broadway, Chicago IL 60657"); ?>
+    <com:MKMapComponent name="map1" width="500" height="400">
+        <options>
+            <type>roadmap</type>
+            <center><?= $doejo['lat'] ?>, <?= $doejo['lon'] ?></center>
+            <zoom>15</zoom>
+            <scrollwheel>false</scrollwheel>
+            <draggable>false</draggable>
+            <controls>
+                <navigationControl>false</navigationControl>
+                <mapTypeControl>false</mapTypeControl>
+                <scaleControl>false</scaleControl>
+            </controls>
+        </options>
+        <markers>
+            <marker lat="<?= $doejo['lat'] ?>" lon="<?= $doejo['lon'] ?>">Doejo</marker>
+        </markers>
+    </com:MKMapComponent>  
+</body>
+</html>
+
+============ Javascript hooks example ==================
+
+var MKMapKit = new function() {
+    this.initialize = function(map, name) {
+        console.log("map "+name+" created");
+    },
+    this.onMarkerCreate = function(map, marker, name) {
+        marker.draggable = true;
+    },
+    this.onMarkerClick = function(map, marker, name) {
+        var infowindow = new google.maps.InfoWindow({
+            content: marker.title,
+            size: new google.maps.Size(50,50)
+        }).open(map, marker);
+    }
+}

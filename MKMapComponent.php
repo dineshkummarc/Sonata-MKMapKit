@@ -45,12 +45,12 @@ class MKMapComponent extends UIComponent {
 		$this->defaultTemplatesPath = 'Library/MKMapKit/';
 		
 		$this->view = new UIView();
-        $this->view->delegate = $this;
-        $this->view->initWithPhtmlNames("MapTemplate");
+		$this->view->delegate = $this;
+		$this->view->initWithPhtmlNames("MapTemplate");
         
-        $this->bufferizeTemplates();
+		$this->bufferizeTemplates();
         
-        return $this->presentViewControllerToString();
+		return $this->presentViewControllerToString();
 	}
 	
 	private function parseOptions() {

@@ -1,5 +1,10 @@
 MKMapKit
 Visual Google Map component for Sonata framework.
+
+Installation:
+1. Check out the code to your {app_folder}Library/MKMapKit folder.
+2. Add require "MKMapKit/MKMapKit.php"; to your application delegate file.
+
 ==================Sample usage (template file) ==================
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
